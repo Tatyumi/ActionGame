@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
+using System;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
 
 
     /// <summary>状態配列</summary>
-    private List<IPlayerState> states = new List<IPlayerState>();
+    private IPlayerState[] states = new IPlayerState[Enum.GetNames(typeof(PlayerManager.STATE)).Length];
 
     /// <summary>
     /// 状態列挙
@@ -43,8 +43,8 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     private void SetStates()
     {
-        states.Add(new PlayerWaitState(this));
-        states.Add(new PlayerJumpState(this));
+        states[(int)STATE.WAIT] = new PlayerWaitState(this);
+        states[(int)STATE.JUMP] = new PlayerJumpState(this);
     }
 
     /// <summary>
