@@ -7,6 +7,7 @@ public class PlayerWaitState : IPlayerState
     /// <summary>プレイヤーマネージャ</summary>
     private PlayerManager pM;
 
+
     /// <summary>
     /// コンストラクタ
     /// </summary>
@@ -18,11 +19,13 @@ public class PlayerWaitState : IPlayerState
         Initialize();
     }
 
+
     /// <summary>
     /// 初期化処理
     /// </summary>
     public void Initialize()
     {
+        Debug.Log("WaitExe");
     }
 
 
@@ -31,8 +34,6 @@ public class PlayerWaitState : IPlayerState
     /// </summary>
     public void Execute()
     {
-        Debug.Log("WaitExe");
-
         // スペースキー入力判別
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -42,9 +43,13 @@ public class PlayerWaitState : IPlayerState
             pM.SwitchState(PlayerManager.STATE.JUMP);
         }
 
+        // ←入力判別
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            //pM.gameObject.transform.//
+            // 入力があった場合
+
+            // 歩き状態に切り替え
+            pM.SwitchState(PlayerManager.STATE.WALK);
         }
     }
 }

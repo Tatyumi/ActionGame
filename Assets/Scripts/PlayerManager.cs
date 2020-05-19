@@ -16,7 +16,8 @@ public class PlayerManager : MonoBehaviour
     public enum STATE
     {
         WAIT,   // 待機
-        JUMP    // ジャンプ
+        JUMP,   // ジャンプ
+        WALK,   // 歩き
     }
 
     // Use this for initialization
@@ -44,7 +45,8 @@ public class PlayerManager : MonoBehaviour
     private void SetStates()
     {
         states[(int)STATE.WAIT] = new PlayerWaitState(this);
-        states[(int)STATE.JUMP] = new PlayerJumpState(this);
+        states[(int)STATE.JUMP] = new PlayerJumpState(this);    
+        states[(int)STATE.WALK] = new PlayerWalkState(this);
     }
 
     /// <summary>

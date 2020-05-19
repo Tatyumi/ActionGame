@@ -30,6 +30,8 @@ public class PlayerJumpState : IPlayerState
     public void Initialize()
     {
         deltaTime = 0.0f;
+
+        Debug.Log("JumpExeCute");
     }
 
     /// <summary>
@@ -37,8 +39,6 @@ public class PlayerJumpState : IPlayerState
     /// </summary>
     public void Execute()
     {
-
-        Debug.Log("JumpExeCute");
 
         // 計測
         deltaTime += Time.deltaTime;
