@@ -6,7 +6,6 @@ public class PlayerManager : MonoBehaviour
     /// <summary>現在の状態</summary>
     public IPlayerState CurrentState;
 
-
     /// <summary>状態配列</summary>
     private IPlayerState[] states = new IPlayerState[Enum.GetNames(typeof(PlayerManager.STATE)).Length];
 
