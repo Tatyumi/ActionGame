@@ -17,10 +17,10 @@ public abstract class BaseStateProcessor : MonoBehaviour {
     /// <summary>
     /// 状態設定
     /// </summary>
-    protected void SetStates() { }
+    abstract protected void SetStates();
 
     /// <summary>
     /// 状態を切り替える
     /// </summary>
-    protected void SwitchState() { }
+    abstract protected void SwitchState(int state);
 }
