@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PlayerWalkState : IPlayerState
 {
-    /// <summary>プレイヤーマネージャー</summary>
-    private PlayerManager pM;
+    /// <summary>プレイヤーステートプロセッサー</summary>
+    private PlayerStateProcessor pStateProcessor;
     /// <summary>移動速度</summary>
     private float moveSpeed = -0.3f;
 
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    /// <param name="pM"></param>
-    public PlayerWalkState(PlayerManager pM)
+    /// <param name="pSp"></param>
+    public PlayerWalkState(PlayerStateProcessor pSp)
     {
-        this.pM = pM;
+        this.pStateProcessor = pSp;
 
         Initialize();
     }
@@ -42,11 +42,11 @@ public class PlayerWalkState : IPlayerState
             Debug.Log("入力なし");
 
             // 待機状態に切り替え
-            pM.SwitchState(PlayerManager.STATE.WAIT);
+            pStateProcessor.SwitchState((int)PlayerStateProcessor.STATE.WAIT);
 
         }
 
         // 移動
-        pM.transform.position += new Vector3(moveSpeed, 0.0f);
+        pStateProcessor.transform.position += new Vector3(moveSpeed, 0.0f);
     }
 }

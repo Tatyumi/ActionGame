@@ -22,5 +22,5 @@ public abstract class BaseStateProcessor : MonoBehaviour {
     /// <summary>
     /// 状態を切り替える
     /// </summary>
-    abstract protected void SwitchState(int state);
+    abstract public void SwitchState(int state);
 }

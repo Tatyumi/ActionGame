@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class PlayerWaitState : IPlayerState
 {
-    /// <summary>プレイヤーマネージャ</summary>
-    private PlayerManager pM;
+    /// <summary>プレイヤーステートプロセッサー</summary>
+    private PlayerStateProcessor pStateProcessor;
 
 
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    public PlayerWaitState(PlayerManager pM)
+    public PlayerWaitState(PlayerStateProcessor pSp)
     {
-        this.pM = pM;
-        Debug.Log("Wait!!!!!!!");
+        this.pStateProcessor = pSp;
 
         Initialize();
     }
@@ -40,7 +39,7 @@ public class PlayerWaitState : IPlayerState
             // 入力があった場合
 
             // ジャンプ状態に切り替え
-            pM.SwitchState(PlayerManager.STATE.JUMP);
+            pStateProcessor.SwitchState((int)PlayerStateProcessor.STATE.JUMP);
         }
 
         // ←入力判別
@@ -49,7 +48,7 @@ public class PlayerWaitState : IPlayerState
             // 入力があった場合
 
             // 歩き状態に切り替え
-            pM.SwitchState(PlayerManager.STATE.WALK);
+            pStateProcessor.SwitchState((int)PlayerStateProcessor.STATE.WALK);
         }
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerJumpState : IPlayerState
 {
-    /// <summary>プレイヤーマネージャ</summary>
-    private PlayerManager pM;
+    /// <summary>プレイヤーステートプロセッサー</summary>
+    private PlayerStateProcessor pStateProcessor;
     /// <summary>経過時間</summary>
     private float deltaTime;
     /// <summary>ジャンプ時間</summary>
@@ -15,9 +15,9 @@ public class PlayerJumpState : IPlayerState
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    public PlayerJumpState(PlayerManager pM)
+    public PlayerJumpState(PlayerStateProcessor pSp)
     {
-        this.pM = pM;
+        this.pStateProcessor = pSp;
         Debug.Log("Jump!!!!!");
 
         Initialize();
@@ -47,7 +47,7 @@ public class PlayerJumpState : IPlayerState
         if(deltaTime > JUMP_TIME)
         {
             // 待機状態に切り替え
-            pM.SwitchState(PlayerManager.STATE.WAIT);
+            pStateProcessor.SwitchState((int)PlayerStateProcessor.STATE.WAIT);
         }
     }
 }
