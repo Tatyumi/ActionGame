@@ -4,31 +4,36 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
-    private float width;
+    /// <summary>横幅の半値</summary>
+    private float halfWidth;
+    /// <summary>縦幅の半値</summary>
+    private float halfHeight;
 
+    /// <summary>余白</summary>
+    private const float SPACE = 0.1f;
 
     // Use this for initialization
     void Start()
     {
-        //this.gameObject.AddComponent<BoxCollider2D>();
-        //this.gameObject.AddComponent<Rigidbody>();
-        width = this.gameObject.GetComponent<RectTransform>().sizeDelta.x / 2 + 0.1f;
+        halfWidth = this.gameObject.GetComponent<RectTransform>().sizeDelta.x / 2;
+        halfHeight = this.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Ray ray
-
-        Vector2 hitPos = new Vector2(this.transform.position.x + width, this.transform.position.y - this.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2);
-
+        // 衝突判定生成
+        Vector2 hitPos = new Vector2(this.transform.position.x + (halfWidth + SPACE), this.transform.position.y - halfHeight);
         RaycastHit2D hit = Physics2D.Raycast(hitPos, new Vector2(0, 1), 100);
 
+        // 衝突判定の描画
         Debug.DrawRay(hitPos, new Vector2(0, 100), Color.blue, 1);
 
-        // 自身にヒットしている可能性がある
+        // 衝突の有無
         if (hit.collider)
         {
+            // 衝突している場合
+
             Debug.Log("Ray");
         }
     }
